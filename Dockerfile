@@ -10,3 +10,4 @@ RUN npm run build
 FROM nginx:latest
 #COPY nginx.conf /etc/nginx
 COPY --from=builder /hishop_management/build /usr/share/nginx/html
+EXPOSE 80
