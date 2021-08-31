@@ -9,7 +9,7 @@ const MainPage = () => {
     return (
         <Layout style={{minHeight: window.screen.height, minWidth: window.screen.width}}>
             <Header className="header" style={{paddingLeft: 24}}>
-                <div className={"logo"}>
+                <div className={'logo'} style={{float: 'left', width: '12%'}}>
                     <Image
                         alt="logo"
                         width={30}
@@ -20,14 +20,14 @@ const MainPage = () => {
                     />
                     <p style={{display: 'inline', fontSize: 20, color: 'white', marginLeft: 10, verticalAlign: 'middle'}}>Ant Design</p>
                 </div>
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['0']}>
                     <Menu.Item key="1">nav 1</Menu.Item>
                     <Menu.Item key="2">nav 2</Menu.Item>
                     <Menu.Item key="3">nav 3</Menu.Item>
                 </Menu>
             </Header>
             <Layout>
-                <Sider width={200} className="site-layout-background">
+                <Sider width={'12%'} className="site-layout-background">
                     <Menu
                         mode="inline"
                         defaultSelectedKeys={['1']}
