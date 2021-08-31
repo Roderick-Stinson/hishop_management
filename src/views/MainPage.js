@@ -1,11 +1,15 @@
 import {Layout, Menu, Breadcrumb, Image} from 'antd';
-import {UserOutlined, LaptopOutlined, NotificationOutlined} from '@ant-design/icons';
+import {HomeFilled, ShoppingFilled, AccountBookFilled, UnorderedListOutlined, AppstoreAddOutlined, SortAscendingOutlined, TagsOutlined, DeliveredProcedureOutlined, SettingOutlined, FunnelPlotOutlined, FieldTimeOutlined, GiftOutlined, FireOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
+import React, {useState} from "react";
 
 const {SubMenu} = Menu;
 const {Header, Content, Sider} = Layout;
 
 const MainPage = () => {
+    const [collapsed, ToggleCollapsed] = new useState(false);
+
+
     return (
         <Layout style={{minHeight: window.screen.height, minWidth: window.screen.width}}>
             <Header className="header" style={{paddingLeft: 24}}>
@@ -27,30 +31,35 @@ const MainPage = () => {
                 </Menu>
             </Header>
             <Layout>
-                <Sider width={'12%'} className="site-layout-background">
+                <Sider
+                    className="site-layout-background"
+                    trigger={null}
+                    collapsible={true}
+                    collapsed={collapsed}
+                    onCollapse={() => ToggleCollapsed(!collapsed)}
+                    width={'12%'}>
                     <Menu
                         mode="inline"
                         defaultSelectedKeys={['1']}
                         defaultOpenKeys={['sub1']}
                         style={{height: '100%', borderRight: 0}}
                     >
-                        <SubMenu key="sub1" icon={<UserOutlined/>} title="subnav 1">
-                            <Menu.Item key="1">option1</Menu.Item>
-                            <Menu.Item key="2">option2</Menu.Item>
-                            <Menu.Item key="3">option3</Menu.Item>
-                            <Menu.Item key="4">option4</Menu.Item>
+                        <Menu.Item key="MainPage" icon={<HomeFilled/>} title={"首页"} style={{paddingLeft: 50}}>首页</Menu.Item>
+                        <SubMenu key="goods" icon={<ShoppingFilled/>} title={"商品"} style={{paddingLeft: 25}}>
+                            <Menu.Item key="goods_list" icon={<UnorderedListOutlined/>}>商品列表</Menu.Item>
+                            <Menu.Item key="goods_add" icon={<AppstoreAddOutlined/>}>添加商品</Menu.Item>
+                            <Menu.Item key="goods_classification" icon={<SortAscendingOutlined/>}>商品分类</Menu.Item>
+                            <Menu.Item key="goods_tags" icon={<TagsOutlined />}>品牌管理</Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" icon={<LaptopOutlined/>} title="subnav 2">
-                            <Menu.Item key="5">option5</Menu.Item>
-                            <Menu.Item key="6">option6</Menu.Item>
-                            <Menu.Item key="7">option7</Menu.Item>
-                            <Menu.Item key="8">option8</Menu.Item>
+                        <SubMenu key="orders" icon={<AccountBookFilled/>} title={"订单"} style={{paddingLeft: 25}}>
+                            <Menu.Item key="orders_list" icon={<UnorderedListOutlined/>}>订单列表</Menu.Item>
+                            <Menu.Item key="orders_settings" icon={<SettingOutlined/>}>订单设置</Menu.Item>
+                            <Menu.Item key="orders_return" icon={<DeliveredProcedureOutlined/>}>退货情况</Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub3" icon={<NotificationOutlined/>} title="subnav 3">
-                            <Menu.Item key="9">option9</Menu.Item>
-                            <Menu.Item key="10">option10</Menu.Item>
-                            <Menu.Item key="11">option11</Menu.Item>
-                            <Menu.Item key="12">option12</Menu.Item>
+                        <SubMenu key="selling" icon={<FunnelPlotOutlined/>} title={"营销"} style={{paddingLeft: 25}}>
+                            <Menu.Item key="selling_promotion" icon={<FieldTimeOutlined/>}>限时活动</Menu.Item>
+                            <Menu.Item key="selling_coupons" icon={<GiftOutlined/>}>优惠券</Menu.Item>
+                            <Menu.Item key="selling_recommendation" icon={<FireOutlined/>}>人气推荐</Menu.Item>
                         </SubMenu>
                     </Menu>
                 </Sider>
